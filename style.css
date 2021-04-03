@@ -81,16 +81,37 @@ h1 {
 }
 .save{
   text-align: center;
+}.save:hover{
+  cursor: pointer;
 }
 @media only screen and (min-width: 800px) {
   body {
     background-color: lightblue;
   }.main {
-    width: 60%;
+    width: 55%;
     height: 60%;
     background-color: black;
     border: 15px groove burlywood;
     color: white;
     /* box-shadow: -3 3 rgb(110, 109, 109); */
+  }
+}
+@media only screen and (max-width: 500px) {
+  body {
+    font-size: small;
+  }.main {
+    width: 80%;
+    height: 80%;
+    color: white;
+    /* box-shadow: -3 3 rgb(110, 109, 109); */
+  }.date {
+    position: relative;
+    left: 50%;
+    padding-top: 2px;
+    font-size: smaller;
+  }.add{
+    position: relative;
+    top: 80%;
+    left: 85%;
   }
 }

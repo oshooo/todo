@@ -31,6 +31,7 @@
         newTask.contentEditable = true;
         newTask.focus = true;
         let taskVal = newTask.value;
+        
         const del = document.createElement('span');
         del.className = 'delete';
         del.innerHTML = '✘';
@@ -48,8 +49,6 @@
         actions.appendChild(done);
         item.appendChild(actions);
         list.appendChild(item);
-        //Adds tasks to local Storage
-        addTaskLocalStorage(task);
     }
 
     function taskDone(e){
@@ -66,9 +65,6 @@
         
     } 
 
-    function addTaskLocalStorage(task){
-        alert('Task Added');
-    }
     function saveTasks(){
         alert("Hello");
     }
