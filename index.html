@@ -7,19 +7,29 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css" integrity="sha384-vp86vTRFVJgpjF9jiIGPEEqYqlDwgyBgEF109VFjmqGmIY/Y4HV4d3Gp2irVfcrp" crossorigin="anonymous">
     <link rel="icon" href="favicon.png" type="image/png">
     <title>Todo</title>
 </head>
 <body>
     <div class="main">
         <div class="heading">
-            <h1>Todo List</h1> 
-            <span class="date"></span>
+            <div class="title"><h1>Todo List</h1> </div>
+            <div class="date"> <span class="date"></span></div>
         </div>
+        <div class="footer">
+            <form>
+                <input type="text" class="txt_input" autofocus >
+                <button>
+                    <i class="fas fa-fighter-jet"></i>
+                </button>
+            </form>
             <span class="add">+</span>
+        </div>
+            
         <ul class="list">
         </ul>
-        <div class="save">Save</div>
     </div>
     <script src="script.js">
     </script>

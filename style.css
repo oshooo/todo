@@ -8,6 +8,7 @@ body {
   width: 100vw;
   display: grid;
   place-items: center;
+  background-color: antiquewhite;
 }
 .main {
   width: 80%;
@@ -15,22 +16,17 @@ body {
   background-color: black;
   border: 15px groove burlywood;
   color: white;
-  /* box-shadow: -3 3 rgb(110, 109, 109); */
 }
 .heading {
   display: flex;
   padding-top: 10px;
-  position: sticky;
+}.title{
+  flex: 1;
+  text-align: center;
+  text-decoration: underline;
 }
 .date {
-  position: relative;
-  left: 60%;
-  padding-top: 2px;
-}
-h1 {
-  position: relative;
-  left: 40%;
-  text-decoration: underline;
+  padding-right: 1em;
 }
 .add {
   display: grid;
@@ -40,12 +36,35 @@ h1 {
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  position: relative;
-  top: 75%;
-  left: 90%;
 }
 .add:hover {
   cursor: pointer;
+}.txt_input{
+  width: 50%;
+  background-color: transparent;
+  border: none;
+  border-bottom: white 2px solid;
+  color: aliceblue;
+}button{
+  background-color: transparent;
+  border: none;
+}.fas{
+  font-size: 2em;
+  color: white;
+}
+form{
+  visibility: hidden;
+  flex: 1;
+  text-align: center;
+  padding-top: 4%;
+}input{
+  line-height: 2em;
+}
+.footer{
+  display: flex;
+  padding-right: 1em;
+  position: relative;
+  top: 74%;
 }
 .list {
   display: flex;
@@ -79,11 +98,6 @@ h1 {
 .done {
   color: greenyellow;
 }
-.save{
-  text-align: center;
-}.save:hover{
-  cursor: pointer;
-}
 @media only screen and (min-width: 800px) {
   body {
     background-color: lightblue;
@@ -102,8 +116,6 @@ h1 {
   }.main {
     width: 80%;
     height: 80%;
-    color: white;
-    /* box-shadow: -3 3 rgb(110, 109, 109); */
   }.date {
     position: relative;
     left: 50%;
