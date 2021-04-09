@@ -5,7 +5,7 @@
     const saveTask = document.querySelector('.save');
     const form = document.querySelector('form');
     const btn = document.querySelector('button');
-    const txt_input = document.querySelector('input');
+    // const txt_input = document.querySelector('input');
 
 //Date
     const d = new Date();
@@ -20,10 +20,18 @@
     
     
 //Event Listeners
-    btn.addEventListener('click', saveTasks)
-    addTask.addEventListener('click', addNewTask);
-    document.body.addEventListener('click', taskDone);
-    document.body.addEventListener('click', deleteTask);
+    eventlisteners();
+    
+
+    function eventlisteners(){
+        btn.addEventListener('click', saveTasks)
+        addTask.addEventListener('click', addNewTask);
+        document.body.addEventListener('click', taskDone);
+        document.body.addEventListener('click', deleteTask);
+        // document.body.addEventListener('click', editTask);
+        document.addEventListener('DOMContentLoaded', localStorageOnLoad);
+    }
+    
 
     
 //Functions
@@ -44,13 +52,24 @@
         }
         
     } 
+    // function editTask(e){
+    //     let TaskComplete = e.target.parentElement.previousElementSibling;
+    //     if(e.target.className == 'edit'){
+    //         TaskComplete.contentEditable = true;
+    //     }
+        
+    // }
+    
 
     function saveTasks(e){
+
         e.preventDefault();
+
+        const task = document.querySelector('input').value;
+        
         const newTask = document.createElement('li');
         newTask.className = 'task';
-        const taskVal = txt_input.value;
-        newTask.innerText = taskVal;
+        newTask.textContent = task;
         form.style.visibility = 'hidden';
 
         //delete Task
@@ -62,6 +81,13 @@
         const done = document.createElement('span');
         done.className = 'done';
         done.innerHTML = '✔';
+        
+        //Edit Task
+        // const edit = document.createElement('span');
+        // edit.className = 'edit';
+        // edit.innerHTML = '✔';
+
+        //parent Element of Actions
         const actions = document.createElement('div');
         actions.className = 'action';
 
@@ -71,24 +97,82 @@
         item.appendChild(newTask);
         actions.appendChild(del);
         actions.appendChild(done);
+        // actions.appendChild(edit);
         item.appendChild(actions);
         list.appendChild(item);
        
         //saves tweet to local storage
-        addTaskToLocalStorage(taskVal)
+        addTaskToLocalStorage(task)
 
-        txt_input.value = "";
+
+        document.querySelector('input').value = "";
     }
 
-    function addTaskToLocalStorage (taskVal) {
-        
+    function addTaskToLocalStorage (task) {
+        let tasks = getTasksFromStorage();
+
+        tasks.push(task);
+
+        localStorage.setItem('tasks', JSON.stringify( tasks) );
     }
 
-    function getTasksFromStorage () {
+    function getTasksFromStorage() {
         let tasks;
+        const tasksLS = localStorage.getItem('tasks');
 
-        if(localStorage.getItem('tasks') == null) {
-            
+        if( tasksLS === null) {
+            tasks = [];
+        }else{
+            tasks = JSON.parse( tasksLS)
         }
          
+        return tasks;
+    }
+
+    function localStorageOnLoad(){
+        let tasks = getTasksFromStorage();
+
+        tasks.forEach(function(task){       
+                
+            // const newTask = document.createElement('li');
+            // newTask.textContent = task;
+
+            // //delete Task
+            // const del = document.createElement('span');
+            // del.innerHTML = '✘';
+            
+            // //mark task as done
+            // const done = document.createElement('span');
+            // done.innerHTML = '✔';
+            
+            // list.appendChild(newTask);
+
+            const newTask = document.createElement('li');
+            newTask.className = 'task';
+            newTask.textContent = task;
+            form.style.visibility = 'hidden';
+
+            //delete Task
+            const del = document.createElement('span');
+            del.className = 'delete';
+            del.innerHTML = '✘';
+            
+            //mark task as done
+            const done = document.createElement('span');
+            done.className = 'done';
+            done.innerHTML = '✔';
+            const actions = document.createElement('div');
+            actions.className = 'action';
+
+            const item = document.createElement('div');
+
+            item.className = 'item';
+            item.appendChild(newTask);
+            actions.appendChild(del);
+            actions.appendChild(done);
+            item.appendChild(actions);
+            list.appendChild(item);
+
+
+        });
     }

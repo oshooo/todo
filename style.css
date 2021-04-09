@@ -107,7 +107,6 @@ form{
     background-color: black;
     border: 15px groove burlywood;
     color: white;
-    /* box-shadow: -3 3 rgb(110, 109, 109); */
   }
 }
 @media only screen and (max-width: 500px) {
