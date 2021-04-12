@@ -47,9 +47,13 @@
         
     }
     function deleteTask(e){
+
         if(e.target.className == 'delete'){
             e.target.parentElement.parentElement.remove();
         }
+
+        //remove task from local storage
+        console.log(e.target.parentElement.previousElementSibling)
         
     } 
     // function editTask(e){
@@ -134,19 +138,6 @@
 
         tasks.forEach(function(task){       
                 
-            // const newTask = document.createElement('li');
-            // newTask.textContent = task;
-
-            // //delete Task
-            // const del = document.createElement('span');
-            // del.innerHTML = '✘';
-            
-            // //mark task as done
-            // const done = document.createElement('span');
-            // done.innerHTML = '✔';
-            
-            // list.appendChild(newTask);
-
             const newTask = document.createElement('li');
             newTask.className = 'task';
             newTask.textContent = task;
@@ -176,3 +167,4 @@
 
         });
     }
+    
