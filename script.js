@@ -53,7 +53,7 @@
         }
 
         //remove task from local storage
-        console.log(e.target.parentElement.previousElementSibling)
+        removeTaskLocalStorage(e.target.parentElement.parentElement.textContent);
         
     } 
     // function editTask(e){
@@ -64,7 +64,6 @@
         
     // }
     
-
     function saveTasks(e){
 
         e.preventDefault();
@@ -168,3 +167,17 @@
         });
     }
     
+    function removeTaskLocalStorage(task){
+
+        let tasks = getTasksFromStorage();
+
+        const taskDelete = task.substring( 0, task.length -2 );
+
+        tasks.forEach(function(tasksLS, index){
+            if(taskDelete === tasksLS) {
+                tasks.splice(index, 1);
+            }
+        });
+
+        localStorage.setItem("tasks", JSON.stringify(tasks));
+    }
