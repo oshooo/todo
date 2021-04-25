@@ -104,16 +104,19 @@ form{
   }.main {
     width: 55%;
     height: 60%;
-    background-color: black;
-    border: 15px groove burlywood;
-    color: white;
+  }.footer{
+    top: 73%;
+    padding-bottom: .2em;
   }
 }
 @media only screen and (max-width: 500px) {
   body {
     font-size: small;
+    background-color: lightblue;
   }.main {
     width: 80%;
     height: 80%;
+  }.footer{
+    top: 83%;
   }
 }
